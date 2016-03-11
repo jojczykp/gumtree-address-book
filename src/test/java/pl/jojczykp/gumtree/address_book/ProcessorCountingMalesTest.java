@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class ProcessorTest {
+public class ProcessorCountingMalesTest {
 
 	private Processor testee = new Processor();
 
