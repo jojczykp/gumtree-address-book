@@ -27,11 +27,12 @@ public class Application {
 	}
 
 	void run(String pathToFile) {
-		Stream<String> stream = streamer.stream(pathToFile);
-		String result = processor.process(stream);
+		try (Stream<String> stream = streamer.stream(pathToFile)) {
+			String result = processor.process(stream);
 
-		System.out.println(result);
-		System.out.println();
+			System.out.println(result);
+			System.out.println();
+		}
 	}
 
 }
