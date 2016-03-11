@@ -4,33 +4,34 @@ import java.util.stream.Stream;
 
 public class Application {
 
-	private void run(String[] args) {
+	private Streamer streamer;
+	private Processor processor;
+
+	public Application(Streamer streamer, Processor processor) {
+		this.streamer = streamer;
+		this.processor = processor;
+	}
+
+	public static void main(String args[]) {
 		if (args.length != 1) {
 			printUsage();
 		} else {
-			process(args[0]);
+			Application application = new Application(new Streamer(), new Processor());
+			application.run(args[0]);
 		}
 	}
 
-	private void printUsage() {
+	private static void printUsage() {
 		System.err.println("Error: Wrong number of arguments.");
 		System.err.println("Usage: java -jar gumtree-address-book.jar <address book file name>");
 	}
 
-	private void process(String pathToFile) {
-		Streamer streamer = new Streamer();
-		Processor processor = new Processor();
-
+	void run(String pathToFile) {
 		Stream<String> stream = streamer.stream(pathToFile);
 		String result = processor.process(stream);
 
 		System.out.println(result);
 		System.out.println();
-	}
-
-	public static void main(String args[]) {
-		Application application = new Application();
-		application.run(args);
 	}
 
 }
