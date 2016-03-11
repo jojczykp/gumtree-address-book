@@ -25,6 +25,7 @@ public class ApplicationTest {
 
 	@Mock private Streamer streamer;
 	@Mock private Processor processor;
+	@Mock private Queries queries;
 
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -43,8 +44,8 @@ public class ApplicationTest {
 
 	@Test
 	public void shouldProcess() {
-		Application testee = new Application(streamer, processor);
-		when(processor.process(any())).thenReturn(SOME_OUTPUT);
+		Application testee = new Application(streamer, processor, queries);
+		when(processor.process(any(), any())).thenReturn(SOME_OUTPUT);
 
 		testee.run("someFile");
 

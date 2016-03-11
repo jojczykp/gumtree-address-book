@@ -12,6 +12,8 @@ public class ProcessorCountingMalesTest {
 
 	private Processor testee = new Processor();
 
+	private Queries queries = new Queries();
+
 	@Test
 	public void shouldCountMales() {
 		Stream<String> input = Arrays.stream(new String[] {
@@ -19,7 +21,7 @@ public class ProcessorCountingMalesTest {
 				"Sarah Stone, Female, 20/09/80",
 				"Paul Robinson, Male, 15/01/85"});
 
-		long result = testee.process(input);
+		long result = testee.process(input, queries);
 
 		assertThat(result, is(2L));
 	}
@@ -29,7 +31,7 @@ public class ProcessorCountingMalesTest {
 		Stream<String> input = Arrays.stream(new String[] {
 				"Sarah Stone, Female, 20/09/80"});
 
-		long result = testee.process(input);
+		long result = testee.process(input, queries);
 
 		assertThat(result, is(0L));
 	}
@@ -38,7 +40,7 @@ public class ProcessorCountingMalesTest {
 	public void shouldCountZeroMalesIfEmptyData() {
 		Stream<String> input = Arrays.stream(new String[0]);
 
-		long result = testee.process(input);
+		long result = testee.process(input, queries);
 
 		assertThat(result, is(0L));
 	}

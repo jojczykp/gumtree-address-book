@@ -4,11 +4,10 @@ import java.util.stream.Stream;
 
 public class Processor {
 
-	public long process(Stream<String> stream) {
+	public long process(Stream<String> stream, Queries queries) {
 		return stream
 				.map(Record::new)
-				.filter(r -> r.getGender() == Record.Gender.MALE)
-				.count();
+				.collect(queries.countingMales());
 	}
 
 }
