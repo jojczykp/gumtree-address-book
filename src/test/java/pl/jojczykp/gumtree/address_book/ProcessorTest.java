@@ -24,4 +24,23 @@ public class ProcessorTest {
 		assertThat(result, is(2L));
 	}
 
+	@Test
+	public void shouldCountZeroMales() {
+		Stream<String> input = Arrays.stream(new String[] {
+				"Sarah Stone, Female, 20/09/80"});
+
+		long result = testee.process(input);
+
+		assertThat(result, is(0L));
+	}
+
+	@Test
+	public void shouldCountZeroMalesIfEmptyData() {
+		Stream<String> input = Arrays.stream(new String[0]);
+
+		long result = testee.process(input);
+
+		assertThat(result, is(0L));
+	}
+
 }
