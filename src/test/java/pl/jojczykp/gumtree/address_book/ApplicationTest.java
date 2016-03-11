@@ -21,6 +21,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ApplicationTest {
 
+	private static final long SOME_OUTPUT = 2;
+
 	@Mock private Streamer streamer;
 	@Mock private Processor processor;
 
@@ -42,11 +44,11 @@ public class ApplicationTest {
 	@Test
 	public void shouldProcess() {
 		Application testee = new Application(streamer, processor);
-		when(processor.process(any())).thenReturn("someOutput");
+		when(processor.process(any())).thenReturn(SOME_OUTPUT);
 
 		testee.run("someFile");
 
-		assertThat(outContent.toString().trim(), is(equalTo("someOutput")));
+		assertThat(outContent.toString().trim(), is(equalTo(Long.toString(SOME_OUTPUT))));
 		assertThat(errContent.toString(), isEmptyString());
 	}
 

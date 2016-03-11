@@ -28,7 +28,7 @@ public class Application {
 
 	void run(String pathToFile) {
 		try (Stream<String> stream = streamer.stream(pathToFile)) {
-			String result = processor.process(stream);
+			long result = processor.process(stream);
 
 			System.out.println(result);
 			System.out.println();
