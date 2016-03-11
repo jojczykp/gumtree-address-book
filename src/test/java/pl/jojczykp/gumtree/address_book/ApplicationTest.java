@@ -9,7 +9,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -21,7 +23,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ApplicationTest {
 
-	private static final int SOME_OUTPUT = 2;
+	private static final List<Object> SOME_OUTPUT = asList(1, "a");
 
 	@Mock private Streamer streamer;
 	@Mock private Processor processor;
@@ -49,7 +51,7 @@ public class ApplicationTest {
 
 		testee.run("someFile");
 
-		assertThat(outContent.toString().trim(), is(equalTo(Long.toString(SOME_OUTPUT))));
+		assertThat(outContent.toString().trim(), is(equalTo(SOME_OUTPUT.toString())));
 		assertThat(errContent.toString(), isEmptyString());
 	}
 

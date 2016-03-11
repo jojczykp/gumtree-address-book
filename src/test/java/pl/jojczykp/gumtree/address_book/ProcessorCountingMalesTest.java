@@ -3,8 +3,10 @@ package pl.jojczykp.gumtree.address_book;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -21,9 +23,9 @@ public class ProcessorCountingMalesTest {
 				"Sarah Stone, Female, 20/09/80",
 				"Paul Robinson, Male, 15/01/85"});
 
-		int result = testee.process(input, queries);
+		List<?> result = testee.process(input, queries);
 
-		assertThat(result, is(2));
+		assertThat(result, is(singletonList(2)));
 	}
 
 	@Test
@@ -31,18 +33,18 @@ public class ProcessorCountingMalesTest {
 		Stream<String> input = Arrays.stream(new String[] {
 				"Sarah Stone, Female, 20/09/80"});
 
-		int result = testee.process(input, queries);
+		List<?> result = testee.process(input, queries);
 
-		assertThat(result, is(0));
+		assertThat(result, is(singletonList(0)));
 	}
 
 	@Test
 	public void shouldCountZeroMalesIfEmptyData() {
 		Stream<String> input = Arrays.stream(new String[0]);
 
-		int result = testee.process(input, queries);
+		List<?> result = testee.process(input, queries);
 
-		assertThat(result, is(0));
+		assertThat(result, is(singletonList(0)));
 	}
 
 }
