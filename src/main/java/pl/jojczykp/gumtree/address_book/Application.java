@@ -30,7 +30,7 @@ public class Application {
 
 	void run(String pathToFile) {
 		try (Stream<String> stream = streamer.stream(pathToFile)) {
-			long result = processor.process(stream, queries);
+			int result = processor.process(stream, queries);
 
 			System.out.println(result);
 			System.out.println();

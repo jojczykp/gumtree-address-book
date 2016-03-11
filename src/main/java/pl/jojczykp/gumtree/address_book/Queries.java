@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 public class Queries {
 
-	public Collector<Record, ?, Long> countingMales() {
-		return Collectors.summingLong(r -> r.getGender() == Record.Gender.MALE ? 1 : 0);
+	public Collector<Record, ?, Integer> countingMales() {
+		return Collectors.summingInt(r -> r.getGender() == Record.Gender.MALE ? 1 : 0);
 	}
 
 }

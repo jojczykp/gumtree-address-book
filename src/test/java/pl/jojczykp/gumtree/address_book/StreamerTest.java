@@ -10,15 +10,18 @@ import static org.hamcrest.Matchers.is;
 
 public class StreamerTest {
 
+	private static final String FILE_NAME = "AddressBook";
+	private static final long NUM_OF_LINES = 5L;
+
 	private Streamer testee = new Streamer();
 
 	@Test
 	public void shouldReadFile() {
-		Stream<String> stream = testee.stream(getResourcePathAsString("AddressBook"));
+		Stream<String> stream = testee.stream(getResourcePathAsString(FILE_NAME));
 
 		long count = stream.count();
 
-		assertThat(count, is(5L));
+		assertThat(count, is(NUM_OF_LINES));
 	}
 
 	@Test(expected = RuntimeException.class)

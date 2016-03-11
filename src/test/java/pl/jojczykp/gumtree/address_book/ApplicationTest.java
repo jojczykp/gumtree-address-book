@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ApplicationTest {
 
-	private static final long SOME_OUTPUT = 2;
+	private static final int SOME_OUTPUT = 2;
 
 	@Mock private Streamer streamer;
 	@Mock private Processor processor;
