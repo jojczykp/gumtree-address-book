@@ -22,8 +22,13 @@ public class RecordTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void shouldThrowExceptionOnParsingError() {
+	public void shouldThrowExceptionOnGenderParsingError() {
 		new Record("Abc Def, Zzz, 08/01/1999");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldThrowExceptionOnGeneralParsingError() {
+		new Record("foo bar");
 	}
 
 }

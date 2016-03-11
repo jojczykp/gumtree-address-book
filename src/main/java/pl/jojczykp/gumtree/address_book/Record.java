@@ -11,8 +11,11 @@ public class Record {
 
 	public Record(String row) {
 		Matcher matcher = PATTERN.matcher(row);
-		matcher.find();
-		gender = Gender.valueOf(matcher.group("gender").toUpperCase());
+		if (matcher.find()) {
+			gender = Gender.valueOf(matcher.group("gender").toUpperCase());
+		} else {
+			throw new IllegalArgumentException(row);
+		}
 	}
 
 	public Gender getGender() {
