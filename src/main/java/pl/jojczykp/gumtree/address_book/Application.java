@@ -1,5 +1,7 @@
 package pl.jojczykp.gumtree.address_book;
 
+import java.util.stream.Stream;
+
 public class Application {
 
 	private void run(String[] args) {
@@ -16,6 +18,14 @@ public class Application {
 	}
 
 	private void process(String pathToFile) {
+		Streamer streamer = new Streamer();
+		Processor processor = new Processor();
+
+		Stream<String> stream = streamer.stream(pathToFile);
+		String result = processor.process(stream);
+
+		System.out.println(result);
+		System.out.println();
 	}
 
 	public static void main(String args[]) {
