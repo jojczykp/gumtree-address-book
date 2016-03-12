@@ -6,14 +6,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class ProcessorOldestPersonFunctionalTest {
+public class OldestPersonFunctionalTest {
 
 	private Processor testee = new Processor();
-	private Config config = new Config();
+	private List<Question> questions = singletonList(new Config().oldestPerson());
 
 	@Test
 	public void shouldFindOldest() {
@@ -24,18 +25,18 @@ public class ProcessorOldestPersonFunctionalTest {
 				"Sarah Stone, Female, 20/09/80",
 				"Wes Jackson, Male, 14/08/74");
 
-		List<Answer> answers = testee.process(input, config.getQuestions());
+		List<Answer> answers = testee.process(input, questions);
 
-		assertThat(answers.get(1).getValue(), is(equalTo("Wes Jackson")));
+		assertThat(answers.get(0).getValue(), is(equalTo("Wes Jackson")));
 	}
 
 	@Test
 	public void shouldNotFindOldestIfEmptyData() {
 		Stream<String> input = Arrays.stream(new String[0]);
 
-		List<Answer> answers = testee.process(input, config.getQuestions());
+		List<Answer> answers = testee.process(input, questions);
 
-		assertThat(answers.get(1).getValue(), is(equalTo("N/A")));
+		assertThat(answers.get(0).getValue(), is(equalTo("N/A")));
 	}
 
 }

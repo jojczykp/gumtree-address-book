@@ -31,7 +31,7 @@ public class Application {
 
 	void run(String pathToFile) {
 		try (Stream<String> stream = streamer.stream(pathToFile)) {
-			List<Answer> result = processor.process(stream, config.getQuestions());
+			List<Answer> result = processor.process(stream, config.allQuestions());
 
 			System.out.println(result);
 			System.out.println();

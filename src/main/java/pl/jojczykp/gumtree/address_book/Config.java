@@ -8,18 +8,18 @@ import static java.util.Arrays.asList;
 
 public class Config {
 
-	public List<Question> getQuestions() {
+	public List<Question> allQuestions() {
 		return asList(
 				numberOfMales(),
 				oldestPerson());
 	}
 
-	private Question numberOfMales() {
+	public Question numberOfMales() {
 		return new Question("Number of Males",
 				Collectors.summingInt(r -> r.getGender() == Record.Gender.MALE ? 1 : 0));
 	}
 
-	private Question oldestPerson() {
+	public Question oldestPerson() {
 		return new Question("Oldest person",
 				Collectors.collectingAndThen(
 						Collectors.minBy(Comparator.comparing(Record::getBirth)),
