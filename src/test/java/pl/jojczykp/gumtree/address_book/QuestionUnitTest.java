@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.sameInstance;
 
-public class QuestionTest {
+public class QuestionUnitTest {
 
 	private static final String LABEL = "label";
 	private static final Collector<Record, ?, ?> COLLECTOR = Collectors.toSet();

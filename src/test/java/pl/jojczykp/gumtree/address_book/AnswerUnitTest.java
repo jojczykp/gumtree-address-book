@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class AnswerTest {
+public class AnswerUnitTest {
 
 	private static final String LABEL = "Some Label";
 	private static final Integer VALUE = 5;
