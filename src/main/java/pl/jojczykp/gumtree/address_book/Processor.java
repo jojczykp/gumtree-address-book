@@ -56,7 +56,6 @@ public class Processor {
 			return values;
 		}
 
-
 		@SuppressWarnings("unchecked")
 		private Collector<Record, Object, ?> cast(Collector<Record, ?, ?> collector) {
 			return (Collector<Record, Object, ?>) collector;

@@ -13,7 +13,6 @@ import static org.hamcrest.Matchers.is;
 public class ProcessorOldestPersonTest {
 
 	private Processor testee = new Processor();
-
 	private Queries queries = new Queries();
 
 	@Test
