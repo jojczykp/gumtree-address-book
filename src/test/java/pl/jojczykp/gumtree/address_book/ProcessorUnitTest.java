@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ProcessorTest {
+public class ProcessorUnitTest {
 
 	private Processor testee = new Processor();
 

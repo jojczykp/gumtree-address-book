@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class ProcessorOldestPersonTest {
+public class ProcessorOldestPersonFunctionalTest {
 
 	private Processor testee = new Processor();
 	private Queries queries = new Queries();

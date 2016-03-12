@@ -21,7 +21,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ApplicationTest {
+public class ApplicationUnitTest {
 
 	private static final List<Object> SOME_OUTPUT = asList(1, "a");
 

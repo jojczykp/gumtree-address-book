@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class ProcessorCountingMalesTest {
+public class ProcessorCountingMalesFunctionalTest {
 
 	private Processor testee = new Processor();
 	private Queries queries = new Queries();

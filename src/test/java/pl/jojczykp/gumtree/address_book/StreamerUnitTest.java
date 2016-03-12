@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class StreamerTest {
+public class StreamerUnitTest {
 
 	private static final String FILE_NAME = "AddressBook";
 	private static final long NUM_OF_LINES = 5L;
@@ -32,7 +32,7 @@ public class StreamerTest {
 	}
 
 	public static String getResourcePathAsString(String name) {
-		ClassLoader classLoader = StreamerTest.class.getClassLoader();
+		ClassLoader classLoader = StreamerUnitTest.class.getClassLoader();
 		File file = new File(classLoader.getResource(name).getFile());
 
 		return file.getAbsolutePath();
