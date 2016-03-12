@@ -8,7 +8,6 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
-import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
 public class Config {
 
@@ -62,8 +61,8 @@ public class Config {
 		}
 
 		public YoungerOlderAccumulator merge(YoungerOlderAccumulator other) {
-			youngerBirth = defaultIfNull(youngerBirth, other.youngerBirth);
-			olderBirth = defaultIfNull(olderBirth, other.olderBirth);
+			youngerBirth = ((youngerBirth == null) ? other.youngerBirth : youngerBirth);
+			olderBirth = ((olderBirth == null) ? other.olderBirth : olderBirth);
 
 			return this;
 		}
