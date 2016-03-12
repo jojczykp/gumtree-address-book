@@ -2,7 +2,7 @@ package pl.jojczykp.gumtree.address_book;
 
 import java.util.stream.Collector;
 
-public class Question {
+public final class Question {
 
 	private final String label;
 	private final Collector<Record, ?, ?> collector;
