@@ -10,12 +10,12 @@ public final class Answer {
 		this.value = value;
 	}
 
+	public String getLabel() {
+		return label;
+	}
+
 	public Object getValue() {
 		return value;
 	}
 
-	@Override
-	public String toString() {
-		return label + ": " + value;
-	}
 }

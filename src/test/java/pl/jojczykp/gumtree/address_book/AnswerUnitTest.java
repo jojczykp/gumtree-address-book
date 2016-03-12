@@ -11,13 +11,20 @@ public class AnswerUnitTest {
 	private static final String LABEL = "Some Label";
 	private static final Integer VALUE = 5;
 
+	private Answer testee = new Answer(LABEL, VALUE);
+
 	@Test
-	public void shouldConvertToString() {
-		Answer answer = new Answer(LABEL, VALUE);
+	public void shouldGetLabel() {
+		String label = testee.getLabel();
 
-		String string = answer.toString();
+		assertThat(label, is(equalTo(LABEL)));
+	}
 
-		assertThat(string, is(equalTo(LABEL + ": " + VALUE)));
+	@Test
+	public void shouldGetValue() {
+		Object value = testee.getValue();
+
+		assertThat(value, is(equalTo(VALUE)));
 	}
 
 }
