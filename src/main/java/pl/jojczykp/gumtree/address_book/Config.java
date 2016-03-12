@@ -19,19 +19,19 @@ public class Config {
 	}
 
 	public Question numberOfMales() {
-		return new Question("Number of Males",
+		return new Question("1. Number of Males",
 				Collectors.summingInt(r -> r.getGender() == Record.Gender.MALE ? 1 : 0));
 	}
 
 	public Question oldestPerson() {
-		return new Question("Oldest person",
+		return new Question("2. Oldest person",
 				Collectors.collectingAndThen(
 						Collectors.minBy(Comparator.comparing(Record::getBirth)),
 						record -> record.isPresent() ? record.get().getName() : "N/A"));
 	}
 
 	public Question birthDelay() {
-		return new Question("Days that Bill is Older than Paul",
+		return new Question("3. Days that Bill is Older than Paul",
 				Collector.of(
 						() -> new YoungerOlderAccumulator("Bill McKnight", "Paul Robinson"),
 						YoungerOlderAccumulator::consume,
