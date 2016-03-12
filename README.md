@@ -23,7 +23,7 @@ For details see below or at https://github.com/gumtreeuk/address-book
 
 - Maven 3, Java 8, IntelliJ 15.
 
-- TODO: i.e. concurrency... 
+- TODO: i.e. concurrency, localization, then introducing DI framework may become elegant. 
 
 ==========================================================
 
