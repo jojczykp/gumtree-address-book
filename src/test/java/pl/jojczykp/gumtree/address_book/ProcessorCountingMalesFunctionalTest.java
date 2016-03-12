@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 public class ProcessorCountingMalesFunctionalTest {
 
 	private Processor testee = new Processor();
-	private Queries queries = new Queries();
+	private Config config = new Config();
 
 	@Test
 	public void shouldCountMales() {
@@ -21,9 +21,9 @@ public class ProcessorCountingMalesFunctionalTest {
 				"Sarah Stone, Female, 20/09/80",
 				"Paul Robinson, Male, 15/01/85");
 
-		List<?> result = testee.process(input, queries);
+		List<Answer> answers = testee.process(input, config.getQuestions());
 
-		assertThat(result.get(0), is(2));
+		assertThat(answers.get(0).getValue(), is(2));
 	}
 
 	@Test
@@ -31,18 +31,18 @@ public class ProcessorCountingMalesFunctionalTest {
 		Stream<String> input = Stream.of(
 				"Sarah Stone, Female, 20/09/80");
 
-		List<?> result = testee.process(input, queries);
+		List<Answer> answers = testee.process(input, config.getQuestions());
 
-		assertThat(result.get(0), is(0));
+		assertThat(answers.get(0).getValue(), is(0));
 	}
 
 	@Test
 	public void shouldCountZeroMalesIfEmptyData() {
 		Stream<String> input = Arrays.stream(new String[0]);
 
-		List<?> result = testee.process(input, queries);
+		List<Answer> answers = testee.process(input, config.getQuestions());
 
-		assertThat(result.get(0), is(0));
+		assertThat(answers.get(0).getValue(), is(0));
 	}
 
 }

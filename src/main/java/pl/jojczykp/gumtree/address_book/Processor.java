@@ -9,11 +9,11 @@ import static java.util.stream.Collectors.toList;
 
 public class Processor {
 
-	public List<Object> process(Stream<String> stream, Queries queries) {
+	public List<Answer> process(Stream<String> stream, List<Question> questions) {
 		return stream
 				.map(Record::new)
 				.collect(Collector.of(
-						() -> new Accumulator(queries.getQueries()),
+						() -> new Accumulator(questions),
 						Accumulator::consume,
 						Accumulator::merge,
 						Accumulator::finisher
@@ -22,11 +22,13 @@ public class Processor {
 
 	private static class Accumulator {
 
+		private List<Question> questions;
 		private List<Collector<Record, Object, ?>> collectors;
 		private List<Object> data;
 
-		public Accumulator(List<Collector<Record, ?, ?>> collectors) {
-			this.collectors = collectors.stream().map(this::cast).collect(toList());
+		public Accumulator(List<Question> questions) {
+			this.questions = questions;
+			this.collectors = questions.stream().map(q -> cast(q.getCollector())).collect(toList());
 			this.data = collectors.stream()
 					.map(collector -> collector.supplier().get())
 					.collect(toList());
@@ -46,14 +48,15 @@ public class Processor {
 			return this;
 		}
 
-		public List<Object> finisher() {
-			List<Object> values = new ArrayList<>(collectors.size());
+		public List<Answer> finisher() {
+			List<Answer> results = new ArrayList<>(collectors.size());
 
 			for (int i = 0 ; i < data.size() ; i++) {
-				values.add(collectors.get(i).finisher().apply(data.get(i)));
+				results.add(new Answer(questions.get(i).getLabel(),
+						collectors.get(i).finisher().apply(data.get(i))));
 			}
 
-			return values;
+			return results;
 		}
 
 		@SuppressWarnings("unchecked")

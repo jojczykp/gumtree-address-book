@@ -7,19 +7,19 @@ public class Application {
 
 	private Streamer streamer;
 	private Processor processor;
-	private Queries queries;
+	private Config config;
 
-	public Application(Streamer streamer, Processor processor, Queries queries) {
+	public Application(Streamer streamer, Processor processor, Config config) {
 		this.streamer = streamer;
 		this.processor = processor;
-		this.queries = queries;
+		this.config = config;
 	}
 
 	public static void main(String args[]) {
 		if (args.length != 1) {
 			printUsage();
 		} else {
-			Application application = new Application(new Streamer(), new Processor(), new Queries());
+			Application application = new Application(new Streamer(), new Processor(), new Config());
 			application.run(args[0]);
 		}
 	}
@@ -31,7 +31,7 @@ public class Application {
 
 	void run(String pathToFile) {
 		try (Stream<String> stream = streamer.stream(pathToFile)) {
-			List<Object> result = processor.process(stream, queries);
+			List<Answer> result = processor.process(stream, config.getQuestions());
 
 			System.out.println(result);
 			System.out.println();

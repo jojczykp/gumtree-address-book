@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.is;
 public class ProcessorOldestPersonFunctionalTest {
 
 	private Processor testee = new Processor();
-	private Queries queries = new Queries();
+	private Config config = new Config();
 
 	@Test
 	public void shouldFindOldest() {
@@ -24,18 +24,18 @@ public class ProcessorOldestPersonFunctionalTest {
 				"Sarah Stone, Female, 20/09/80",
 				"Wes Jackson, Male, 14/08/74");
 
-		List<?> result = testee.process(input, queries);
+		List<Answer> answers = testee.process(input, config.getQuestions());
 
-		assertThat(result.get(1), is(equalTo("Wes Jackson")));
+		assertThat(answers.get(1).getValue(), is(equalTo("Wes Jackson")));
 	}
 
 	@Test
 	public void shouldNotFindOldestIfEmptyData() {
 		Stream<String> input = Arrays.stream(new String[0]);
 
-		List<?> result = testee.process(input, queries);
+		List<Answer> answers = testee.process(input, config.getQuestions());
 
-		assertThat(result.get(1), is(equalTo("N/A")));
+		assertThat(answers.get(1).getValue(), is(equalTo("N/A")));
 	}
 
 }
