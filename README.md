@@ -12,7 +12,7 @@ For details see below or at https://github.com/gumtreeuk/address-book
   Seems to be faster and less time consuming.
   
 - No DI framework, DI realized in main class, by setter injections.
-  Tried with Spring, considered also Guice, but in this simple task it seems to be redundant.
+  Tried with Spring, considered also Guice, but in this simple task it seems to be too much :)
 
 - Main class sets dependencies.
   Separate components for streaming file, parsing lines, representing questions, answers and
