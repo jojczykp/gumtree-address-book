@@ -18,7 +18,12 @@ For details see below or at https://github.com/gumtreeuk/address-book
   Separate components for streaming file, parsing lines, representing questions, answers and
   output formatting. Also separate class for questions specification.
 
+- Thanks to own compound collector implementation, we iterate over file only once - doesn't matter
+  how many questions/collectors do we have.
+
 - Maven 3, Java 8, IntelliJ 15.
+
+- TODO: i.e. concurrency... 
 
 ==========================================================
 
