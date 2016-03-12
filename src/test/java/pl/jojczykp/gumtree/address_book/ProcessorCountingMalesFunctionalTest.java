@@ -16,10 +16,10 @@ public class ProcessorCountingMalesFunctionalTest {
 
 	@Test
 	public void shouldCountMales() {
-		Stream<String> input = Arrays.stream(new String[] {
+		Stream<String> input = Stream.of(
 				"Bill McKnight, Male, 16/03/77",
 				"Sarah Stone, Female, 20/09/80",
-				"Paul Robinson, Male, 15/01/85"});
+				"Paul Robinson, Male, 15/01/85");
 
 		List<?> result = testee.process(input, queries);
 
@@ -28,8 +28,8 @@ public class ProcessorCountingMalesFunctionalTest {
 
 	@Test
 	public void shouldCountZeroMales() {
-		Stream<String> input = Arrays.stream(new String[] {
-				"Sarah Stone, Female, 20/09/80"});
+		Stream<String> input = Stream.of(
+				"Sarah Stone, Female, 20/09/80");
 
 		List<?> result = testee.process(input, queries);
 

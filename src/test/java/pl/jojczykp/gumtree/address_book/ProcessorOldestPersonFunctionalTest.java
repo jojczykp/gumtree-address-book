@@ -17,12 +17,12 @@ public class ProcessorOldestPersonFunctionalTest {
 
 	@Test
 	public void shouldFindOldest() {
-		Stream<String> input = Arrays.stream(new String[] {
+		Stream<String> input = Stream.of(
 				"Bill McKnight, Male, 16/03/77",
 				"Paul Robinson, Male, 15/01/85",
 				"Gemma Lane, Female, 20/11/91",
 				"Sarah Stone, Female, 20/09/80",
-				"Wes Jackson, Male, 14/08/74"});
+				"Wes Jackson, Male, 14/08/74");
 
 		List<?> result = testee.process(input, queries);
 
