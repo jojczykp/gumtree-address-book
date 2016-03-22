@@ -31,7 +31,7 @@ public class StreamerUnitTest {
 		stream.count();
 	}
 
-	public static String getResourcePathAsString(String name) {
+	private static String getResourcePathAsString(String name) {
 		ClassLoader classLoader = StreamerUnitTest.class.getClassLoader();
 		File file = new File(classLoader.getResource(name).getFile());
 
